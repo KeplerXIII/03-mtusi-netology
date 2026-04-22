@@ -20,12 +20,21 @@ def run_structured():
         print(f"[ERR] structured_output: {e}")
 
 
+def run_chat():
+    try:
+        from chat_bot import main as run
+        run()
+    except ImportError as e:
+        print(f"[ERR] chat_bot: {e}")
+
+
 def print_menu():
     print("\n" + "=" * 50)
     print("ВЫБЕРИ РЕЖИМ")
     print("=" * 50)
     print("1 — Benchmark моделей")
     print("2 — Structured Outputs (тональность)")
+    print("3 — Чат-бот (с памятью)")
     print("0 — Выход")
     print("=" * 50)
 
@@ -42,6 +51,10 @@ def main():
         elif choice == "2":
             print("\n>>> Structured Output\n")
             run_structured()
+
+        elif choice == "3":
+            print("\n>>> Chat Bot\n")
+            run_chat()
 
         elif choice == "0":
             sys.exit(0)
